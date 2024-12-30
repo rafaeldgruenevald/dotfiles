@@ -25,7 +25,6 @@
     wget
     # Terminal
     fd
-    eza
     vim
     zoxide
     bat
