@@ -5,6 +5,9 @@
     enable = true;
   };
   home.file = {
-    "~/.config/nushell/config.nu".source = ../config/config.nu;
+    "~/.config/nushell/"= {
+      source = ../config/nushell;
+      recursive = true;
+    };
   };
 }
