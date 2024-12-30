@@ -159,7 +159,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Lauch Terminal";
-      command = "nixGL alacritty";
+      command = "nixGL ghostty";
       binding = "<Super>Return";
     };
   };

@@ -9,10 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
-    stylix.url = "github:danth/stylix";
+    ghostty.url = "github:ghostty-org/ghostty";
   };
 
-  outputs = { nixpkgs, home-manager, nix-flatpak, stylix, ... }:
+  outputs = { nixpkgs, home-manager, nix-flatpak, ghostty, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -22,9 +22,9 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix ./modules/zoxide.nix nix-flatpak.homeManagerModules.nix-flatpak stylix.homeManagerModules.stylix];
+        modules = [ ./home.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix ./modules/ghostty.nix nix-flatpak.homeManagerModules.nix-flatpak  ];
 
-        # Optionally use extraSpecialArgs
+        extraSpecialArgs = { inherit ghostty; };
         # to pass through arguments to home.nix
       };
     };

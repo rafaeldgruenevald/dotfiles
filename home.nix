@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ghostty, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -19,23 +19,27 @@
   # environment.
   home.packages = with pkgs; [
     # General Stuff
-    ripgrep
-    cmake
-    unzip
-    wget
+    pkgs.ripgrep
+    pkgs.cmake
+    pkgs.unzip
+    pkgs.wget
     # Terminal
-    fd
-    vim
-    bat
-    tldr
-    fastfetch
+    ghostty.packages."${pkgs.system}".default
+    pkgs.fd
+    pkgs.vim
+    pkgs.bat
+    pkgs.zoxide
+    pkgs.tldr
+    pkgs.fastfetch
     # Languages
-    go
-    gcc
-    lua
-    rustup
-    nodejs_22  
+    pkgs.go
+    pkgs.zig
+    pkgs.gcc
+    pkgs.lua
+    pkgs.rustup
+    pkgs.nodejs_22  
   ];
+  
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -70,15 +74,6 @@
       "com.stremio.Stremio"
     ];
   };
-
-  # Stylix
-  #stylix = {
-  #  enable = true;
-  #  polarity = "dark";
-  #  image = ./wallpapers/tux.png;
-  #  base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-  #  #cursor.size = 24;
-  #};
 
   programs.bash.enable = true;
 
