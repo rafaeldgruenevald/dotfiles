@@ -26,7 +26,6 @@
     # Terminal
     fd
     vim
-    zoxide
     bat
     tldr
     fastfetch
