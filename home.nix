@@ -19,35 +19,30 @@
   # environment.
   home.packages = with pkgs; [
     # General Stuff
-    pkgs.ripgrep
-    pkgs.cmake
-    pkgs.unzip
-    pkgs.wget
+    ripgrep
+    cmake
+    unzip
+    wget
     # Terminal
-    ghostty.packages."${pkgs.system}".default
-    pkgs.fd
-    pkgs.vim
-    pkgs.bat
-    pkgs.zoxide
-    pkgs.tldr
-    pkgs.fastfetch
+    fd
+    vim
+    bat
+    zoxide
+    tldr
+    fastfetch
     # Languages
-    pkgs.go
-    pkgs.zig
-    pkgs.gcc
-    pkgs.lua
-    pkgs.rustup
-    pkgs.nodejs_22  
+    go
+    zig
+    gcc
+    lua
+    rustup
+    nodejs_22  
   ];
   
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    "~/.config/ghostty" = {
-      source = ./config/ghostty;
-      recursive = true;
-    };
   };
 
   # Flatpaks
