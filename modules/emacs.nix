@@ -2,7 +2,7 @@
 
 let
   emacs = with pkgs; (emacsPackagesFor
-    (emacs-pgtk).emacsWithPackages (epkgs: with epkgs; [
+    emacs-gtk).emacsWithPackages (epkgs: with epkgs; [
       treesit-grammars.with-all-grammars
       vterm
       mu4e
@@ -44,6 +44,6 @@ in {
     age
   ];
   home.sessionVariables = {
-    PATH = [ "$XDG_CONFIG_HOME/emacs/bin" ];
+    EDITOR = "emacs";
   };
 }
