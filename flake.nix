@@ -22,7 +22,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix ./modules/ghostty.nix nix-flatpak.homeManagerModules.nix-flatpak  ];
+        modules = [ ./home.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix nix-flatpak.homeManagerModules.nix-flatpak  ];
 
         extraSpecialArgs = { inherit ghostty; };
         # to pass through arguments to home.nix
