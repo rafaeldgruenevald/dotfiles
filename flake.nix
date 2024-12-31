@@ -21,7 +21,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ./modules/fonts.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix nix-flatpak.homeManagerModules.nix-flatpak  ];
+        modules = [ ./home.nix ./modules/fonts.nix ./modules/gtk.nix ./modules/gnome.nix ./modules/emacs.nix ./modules/nushell.nix ./modules/alacritty.nix nix-flatpak.homeManagerModules.nix-flatpak  ];
 
         #extraSpecialArgs = { inherit ; };
         # to pass through arguments to home.nix

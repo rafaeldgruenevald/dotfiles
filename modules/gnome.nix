@@ -7,6 +7,7 @@
     forge
     search-light
     blur-my-shell
+    screen-rotate
   ];
   dconf.settings = {
     # GNOME Shell Extensions
@@ -19,6 +20,7 @@
 	"forge@jmmaranan.com"
 	"search-light@icedman.github.com"
         "blur-my-shell@aunetx"
+        "screen-rotate@shyzus.github.io"
       ];
     };
     # GNOME Forge Extension Config 
