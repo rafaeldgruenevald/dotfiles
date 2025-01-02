@@ -43,6 +43,12 @@ in {
     # :lang nix
     age
   ];
+  home.file = {
+    ".doom.d/" = {
+      source = ../config/.doom.d;
+      recursive = true;
+    };
+  };
   home.sessionVariables = {
     EDITOR = "emacs";
   };
