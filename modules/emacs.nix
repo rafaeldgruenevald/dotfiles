@@ -42,6 +42,10 @@ in {
     fava
     # :lang nix
     age
+    # :lang sh
+    shellcheck
+    # :lang markdown
+    md4c
   ];
   home.file = {
     ".doom.d/" = {
