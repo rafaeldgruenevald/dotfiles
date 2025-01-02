@@ -44,8 +44,6 @@ in {
     age
     # :lang sh
     shellcheck
-    # :lang markdown
-    md4c
   ];
   home.file = {
     ".doom.d/" = {
