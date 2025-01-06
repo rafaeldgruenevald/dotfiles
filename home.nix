@@ -52,6 +52,7 @@
       "com.github.tchx84.Flatseal"
       "com.mattjakeman.ExtensionManager"
       "ca.desrt.dconf-editor"
+      "com.github.flxzt.rnote"
       "org.chromium.Chromium"
       "cc.arduino.IDE2"
       "com.jetbrains.IntelliJ-IDEA-Community"
