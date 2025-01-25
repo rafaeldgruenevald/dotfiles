@@ -11,6 +11,7 @@
     wget
 
     # Dev Tools
+    neovim
     chromium
     arduino-ide
     dbeaver-bin
