@@ -6,7 +6,7 @@
   };
   home.file = {
     ".config/nushell/"= {
-      source = ../config/nushell;
+      source = ./config.nu;
       recursive = true;
     };
   };

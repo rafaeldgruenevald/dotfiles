@@ -1,10 +1,14 @@
-{ config, pkgs, ghostty, ... }:
+{ config, pkgs, ... }:
 
 {
+  imports = [
+    ./modules/home-manager/gdm/gnome.nix
+    ./modules/home-manager/ghostty/ghostty.nix
+  ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rafaeldg";
-  home.homeDirectory = "/var/home/rafaeldg";
+  home.homeDirectory = "/home/rafaeldg";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -17,62 +21,35 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    # General Stuff
-    ripgrep
-    cmake
-    unzip
-    wget
-    # Terminal
-    fd
-    vim
-    bat
-    zoxide
-    tldr
-    fastfetch
-    # Languages
-    go
-    zig
-    gcc
-    lua
-    rustup
-    nodejs_22  
+  home.packages = [
   ];
-  
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
   };
 
-  # Flatpaks
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "com.github.tchx84.Flatseal"
-      "com.mattjakeman.ExtensionManager"
-      "ca.desrt.dconf-editor"
-      "com.github.flxzt.rnote"
-      "org.chromium.Chromium"
-      "cc.arduino.IDE2"
-      "com.jetbrains.IntelliJ-IDEA-Community"
-      "io.dbeaver.DBeaverCommunity"
-      "org.libreoffice.LibreOffice"
-      "de.haeckerfelix.Fragments"
-      "com.parsecgaming.parsec"
-      "com.discordapp.Discord"
-      "com.stremio.Stremio"
-    ];
-  };
-
-  programs.bash.enable = true;
-
+  # Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
 
-  # Allow Unfree Software
-  nixpkgs.config.allowUnfree = true;
+  programs.git = {
+    enable = true;
+    userName = "rafaeldgruenevald";
+    userEmail = "rafaeldgruenevald@proton.me";
+  };
+
+  # Set Icon Theme
+  stylix.iconTheme = {
+    enable = true;
+    dark = "WhiteSur";
+    package = pkgs.whitesur-icon-theme;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

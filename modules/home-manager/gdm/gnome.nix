@@ -156,12 +156,12 @@
     # Launch Firefox
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Lauch Firefox";
-      command = "firefox";
+      command = "flatpak run app.zen_browser.zen";
       binding = "<Super>w";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Lauch Terminal";
-      command = "nixGL alacritty";
+      command = "ghostty";
       binding = "<Super>Return";
     };
   };
