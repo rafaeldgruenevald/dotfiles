@@ -1,2 +1,5 @@
 command = nu
+window-padding-x = 5
+font-family = "JetBrainsMono Nerd Font Mono"
+font-size = 11
 theme = GruvboxDarkHard

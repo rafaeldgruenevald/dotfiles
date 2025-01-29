@@ -8,6 +8,11 @@
       clean.extraArgs = "--keep-since 7d --keep 5";
       flake = "/home/rafaeldg/dotfiles";
     };
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+    };
     firefox.enable = true;
     dconf.enable = true;
     virt-manager.enable = true;

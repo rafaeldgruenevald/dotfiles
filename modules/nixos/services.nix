@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   services = {
@@ -40,6 +45,9 @@
 
     # Enable Printing Drivers
     printing.enable = true;
+
+    # Enable Syncthing
+    syncthing.enable = true;
 
     # Enable Flatpak
     flatpak.enable = true;

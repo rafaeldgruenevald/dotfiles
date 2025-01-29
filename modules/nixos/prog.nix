@@ -5,13 +5,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # General Stuff
+    wl-clipboard
     ripgrep
     cmake
     unzip
     wget
 
     # Dev Tools
-    neovim
     chromium
     arduino-ide
     dbeaver-bin
@@ -28,6 +28,14 @@
     fastfetch
     inputs.ghostty.packages.x86_64-linux.default
 
+    # LSP & Formatters
+    nixd
+    nixfmt-rfc-style
+    lua-language-server
+    stylua
+    typescript-language-server
+    prettierd
+
     # Languages
     go
     zig
@@ -36,4 +44,6 @@
     rustup
     nodejs_22
   ];
+  # Required for nixd
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

@@ -2,11 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ 
+  imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
+    ./modules/nixos/fonts.nix
     ./modules/nixos/prog.nix
     ./modules/nixos/intel.nix
     ./modules/nixos/stylix.nix
@@ -29,17 +35,17 @@
       options snd-intel-dspcfg dsp_driver=1
       options snd-hda-intel model=alc256-samsung-headphone
     '';
-    
+
     plymouth.enable = true;
   };
 
   # Enable Nix Flakes
-  nix = { 
-    settings = { 
+  nix = {
+    settings = {
       auto-optimise-store = true;
-      experimental-features = [ 
-        "nix-command" 
-        "flakes" 
+      experimental-features = [
+        "nix-command"
+        "flakes"
       ];
     };
     gc = {
@@ -93,7 +99,10 @@
     isNormalUser = true;
     description = "Rafael Delazeri Gruenevald";
 
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       dconf
       stremio
@@ -112,7 +121,9 @@
     users = {
       "rafaeldg" = import ./home.nix;
     };
-    backupFileExtension = "backup-" + pkgs.lib.readFile "${pkgs.runCommand "timestamp" {} "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+    backupFileExtension =
+      "backup-"
+      + pkgs.lib.readFile "${pkgs.runCommand "timestamp" { } "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
   };
 
   # Allow unfree packages
