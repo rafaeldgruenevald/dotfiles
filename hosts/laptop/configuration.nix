@@ -12,14 +12,14 @@
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ./modules/nixos/fonts.nix
-    ./modules/nixos/prog.nix
-    ./modules/nixos/intel.nix
-    ./modules/nixos/stylix.nix
-    ./modules/nixos/portals.nix
-    ./modules/nixos/programs.nix
-    ./modules/nixos/services.nix
-    ./modules/nixos/virtualization.nix
+    ../.././modules/nixos/fonts.nix
+    ../.././modules/nixos/prog.nix
+    ../.././modules/nixos/intel.nix
+    ../.././modules/nixos/stylix.nix
+    ../.././modules/nixos/portals.nix
+    ../.././modules/nixos/programs.nix
+    ../.././modules/nixos/services.nix
+    ../.././modules/nixos/virtualization.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -119,7 +119,6 @@
       "wheel"
     ];
     packages = with pkgs; [
-      mpv
       dconf
       sioyek
       stremio
