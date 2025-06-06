@@ -24,7 +24,6 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-    firefox.enable = true;
     dconf.enable = true;
     virt-manager.enable = true;
   };

@@ -18,10 +18,8 @@
     fzf
 
     # Dev Tools
-    bottles
     chromium
-    arduino-ide
-    dbeaver-bin
+    librewolf
     jetbrains.idea-community
     jetbrains.rust-rover
     jetbrains.webstorm
@@ -36,7 +34,6 @@
     zoxide
     nushell
     fastfetch
-    inputs.ghostty.packages.x86_64-linux.default
 
     # LSP & Formatters
     nixd

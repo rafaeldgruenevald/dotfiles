@@ -10,10 +10,6 @@
     # Enable the X11 windowing system.
     xserver.enable = true;
 
-    # Enable the GNOME Desktop Environment.
-    xserver.displayManager.gdm.enable = true;
-    xserver.desktopManager.gnome.enable = true;
-
     # Configure keymap in X11
     xserver.xkb = {
       layout = "br";
@@ -46,26 +42,12 @@
     # Enable Printing Drivers
     printing.enable = true;
 
-    # Enable Syncthing
-    syncthing = {
-      enable = true;
-      group = "syncthing";
-      user = "rafaeldg";
-      dataDir = "/home/rafaeldg/Documents";
-      configDir = "/home/rafaeldg/Documents/.config/syncthing";
-      settings.gui = {
-        user = "rafaeldg";
-        password = "rafaelandressa123";
-      };
-    };
-
     # Enable Flatpak
     flatpak.enable = true;
     flatpak.packages = [
       "com.github.tchx84.Flatseal"
       "com.mattjakeman.ExtensionManager"
       "com.st.STM32CubeIDE"
-      "app.zen_browser.zen"
       "com.github.flxzt.rnote"
     ];
   };

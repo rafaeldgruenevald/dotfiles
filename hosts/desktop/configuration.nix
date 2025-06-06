@@ -11,11 +11,11 @@
 
 {
   imports = [
-    ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../.././modules/nixos/fonts.nix
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
     ../.././modules/nixos/prog.nix
-    ../.././modules/nixos/intel.nix
-    ../.././modules/nixos/gnome.nix
+    ../.././modules/nixos/sway.nix
+    ../.././modules/nixos/fonts.nix
     ../.././modules/nixos/stylix.nix
     ../.././modules/nixos/portals.nix
     ../.././modules/nixos/programs.nix
@@ -24,21 +24,9 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  boot = {
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
-
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    extraModprobeConfig = ''
-      options snd-intel-dspcfg dsp_driver=1
-      options snd-hda-intel model=alc256-samsung-headphone
-    '';
-
-    plymouth.enable = true;
-  };
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable Nix Flakes
   nix = {
@@ -49,31 +37,21 @@
         "flakes"
       ];
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
+    /*
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+    */
   };
 
-  networking.hostName = "laptop"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # Syncthing ports: 8384 for remote access to GUI
-  # 22000 TCP and/or UDP for sync traffic
-  # 21027/UDP for discovery
-  # source: https://docs.syncthing.net/users/firewall.html
-  networking.firewall.allowedTCPPorts = [
-    8384
-    22000
-  ];
-  networking.firewall.allowedUDPPorts = [
-    22000
-    21027
-  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -82,19 +60,18 @@
   time.timeZone = "America/Sao_Paulo";
 
   # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "pt_BR.UTF-8";
-      LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_MEASUREMENT = "pt_BR.UTF-8";
-      LC_MONETARY = "pt_BR.UTF-8";
-      LC_NAME = "pt_BR.UTF-8";
-      LC_NUMERIC = "pt_BR.UTF-8";
-      LC_PAPER = "pt_BR.UTF-8";
-      LC_TELEPHONE = "pt_BR.UTF-8";
-      LC_TIME = "pt_BR.UTF-8";
-    };
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "pt_BR.UTF-8";
+    LC_IDENTIFICATION = "pt_BR.UTF-8";
+    LC_MEASUREMENT = "pt_BR.UTF-8";
+    LC_MONETARY = "pt_BR.UTF-8";
+    LC_NAME = "pt_BR.UTF-8";
+    LC_NUMERIC = "pt_BR.UTF-8";
+    LC_PAPER = "pt_BR.UTF-8";
+    LC_TELEPHONE = "pt_BR.UTF-8";
+    LC_TIME = "pt_BR.UTF-8";
   };
 
   # Bluetooth Support
@@ -106,31 +83,19 @@
   # Security
   security.rtkit.enable = true;
 
-  # Configure console keymap
-  console.keyMap = "br-abnt2";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rafaeldg = {
     isNormalUser = true;
     description = "Rafael Delazeri Gruenevald";
-
     extraGroups = [
       "networkmanager"
-      "syncthing"
       "wheel"
     ];
     packages = with pkgs; [
-      dconf
-      sioyek
-      stremio
+      spotify
       discord
-      zathura
+      stremio
       obsidian
-      koreader
-      fragments
-      parsec-bin
-      thunderbird
-      pavucontrol
       libreoffice
     ];
   };
@@ -149,12 +114,31 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
