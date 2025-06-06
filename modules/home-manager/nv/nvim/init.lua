@@ -20,6 +20,7 @@ local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 -- Vim Options
 now(function()
 	vim.g.mapleader = " "
+	vim.opt.relativenumber = true
 	vim.opt.tabstop = 2
 	vim.opt.shiftwidth = 2
 	vim.opt.expandtab = true
@@ -65,10 +66,6 @@ now(function()
 			base0F = "#d65d0e",
 		},
 	})
-end)
-now(function()
-	require("mini.notify").setup()
-	vim.notify = require("mini.notify").make_notify()
 end)
 now(function()
 	require("mini.icons").setup()
@@ -127,14 +124,48 @@ later(function()
 	})
 end)
 
+later(function()
+	add({
+		source = "folke/noice.nvim",
+		depends = { "MunifTanjim/nui.nvim" },
+	})
+	require("noice").setup({
+		lsp = {
+			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+			override = {
+				["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+				["vim.lsp.util.stylize_markdown"] = true,
+			},
+		},
+		-- you can enable a preset for easier configuration
+		presets = {
+			bottom_search = false, -- use a classic bottom cmdline for search
+			command_palette = true, -- position the cmdline and popupmenu together
+			long_message_to_split = true, -- long messages will be sent to a split
+			inc_rename = false, -- enables an input dialog for inc-rename.nvim
+			lsp_doc_border = true, -- add a border to hover docs and signature help
+		},
+	})
+end)
+
 now(function()
 	-- Use other plugins with `add()`. It ensures plugin is available in current
 	-- session (installs if absent)
 	add({
 		source = "neovim/nvim-lspconfig",
 		-- Supply dependencies near target plugin
-		-- depends = { 'folke/lazydev.nvim' },
+		depends = { "folke/lazydev.nvim" },
 	})
+	-- Config so lua_ls can find vim global
+	require("lazydev").setup({
+		ft = "lua",
+		opts = {
+			library = {
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	})
+	-- The Lsp's are being installed with nixpkgs
 	require("lspconfig").nixd.setup({
 		cmd = { "nixd" },
 		settings = {
@@ -155,6 +186,7 @@ now(function()
 	})
 	require("lspconfig").lua_ls.setup({})
 	require("lspconfig").ts_ls.setup({})
+	require("lspconfig").ccls.setup({})
 end)
 
 now(function()
@@ -162,6 +194,7 @@ now(function()
 		source = "stevearc/conform.nvim",
 	})
 	require("conform").setup({
+		-- The formatters are being installed with nixpkgs
 		formatters_by_ft = {
 			lua = { "stylua" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -171,6 +204,15 @@ now(function()
 			lsp_format = "fallback",
 		},
 	})
+end)
+
+now(function()
+	add({
+		source = "nvim-telescope/telescope.nvim",
+		depends = { "nvim-lua/plenary.nvim" },
+	})
+	vim.keymap.set("n", "<space>fh", require("telescope.builtin").help_tags)
+	vim.keymap.set("n", "<space>ff", require("telescope.builtin").find_files)
 end)
 
 later(function()
@@ -188,7 +230,26 @@ later(function()
 	})
 	-- Possible to immediately execute code which depends on the added plugin
 	require("nvim-treesitter.configs").setup({
-		ensure_installed = { "lua", "vimdoc", "javascript", "typescript", "html", "css", "scss" },
+		ensure_installed = {
+			"c",
+			"lua",
+			"vim",
+			"vimdoc",
+			"query",
+			"javascript",
+			"typescript",
+			"html",
+			"css",
+			"scss",
+			"markdown",
+			"markdown_inline",
+			"bash",
+			"regex",
+		},
+
+		-- Automatically install missing parsers when entering buffer
+		auto_install = true,
+
 		highlight = { enable = true },
 	})
 end)

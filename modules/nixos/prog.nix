@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   # List packages installed in system profile. To search, run:
@@ -10,12 +15,17 @@
     cmake
     unzip
     wget
+    fzf
 
     # Dev Tools
+    bottles
     chromium
     arduino-ide
     dbeaver-bin
     jetbrains.idea-community
+    jetbrains.rust-rover
+    jetbrains.webstorm
+    jetbrains.clion
 
     # Terminal
     fd
@@ -35,6 +45,7 @@
     stylua
     typescript-language-server
     prettierd
+    ccls
 
     # Languages
     go
@@ -42,6 +53,7 @@
     gcc
     lua
     rustup
+    octaveFull
     nodejs_22
   ];
   # Required for nixd

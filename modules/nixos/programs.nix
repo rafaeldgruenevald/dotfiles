@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   programs = {
@@ -12,6 +17,12 @@
       enable = true;
       viAlias = true;
       vimAlias = true;
+    };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
     };
     firefox.enable = true;
     dconf.enable = true;

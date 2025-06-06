@@ -61,6 +61,18 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # Syncthing ports: 8384 for remote access to GUI
+  # 22000 TCP and/or UDP for sync traffic
+  # 21027/UDP for discovery
+  # source: https://docs.syncthing.net/users/firewall.html
+  networking.firewall.allowedTCPPorts = [
+    8384
+    22000
+  ];
+  networking.firewall.allowedUDPPorts = [
+    22000
+    21027
+  ];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -88,6 +100,8 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
+  hardware.enableAllFirmware = true;
+
   # Security
   security.rtkit.enable = true;
 
@@ -101,16 +115,22 @@
 
     extraGroups = [
       "networkmanager"
+      "syncthing"
       "wheel"
     ];
     packages = with pkgs; [
+      mpv
       dconf
+      sioyek
       stremio
       discord
+      zathura
       obsidian
+      koreader
       fragments
       parsec-bin
       thunderbird
+      pavucontrol
       libreoffice
     ];
   };
