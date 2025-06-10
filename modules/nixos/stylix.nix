@@ -8,6 +8,7 @@
 {
   stylix = {
     enable = true;
+    autoEnable = true;
     polarity = "dark";
     cursor = {
       package = pkgs.bibata-cursors;

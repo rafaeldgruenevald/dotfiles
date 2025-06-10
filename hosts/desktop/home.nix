@@ -2,10 +2,11 @@
 
 {
   imports = [
-    ../.././modules/home-manager/ghostty/ghostty.nix
     ../.././modules/home-manager/sw/sway.nix
     ../.././modules/home-manager/ro/rofi.nix
     ../.././modules/home-manager/nv/nvim.nix
+    #../.././modules/home-manager/nu/nushell.nix
+    ../.././modules/home-manager/emacs/emacs.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -63,6 +64,8 @@
     dark = "WhiteSur";
     package = pkgs.whitesur-icon-theme;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

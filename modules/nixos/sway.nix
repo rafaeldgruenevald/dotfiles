@@ -9,7 +9,6 @@
     grim
     mako
     slurp
-    nautilus
     autotiling
     pavucontrol
     rofi-wayland
@@ -29,6 +28,8 @@
       };
     };
   };
+
+  programs.thunar.enable = true;
 
   programs.foot = {
     enable = true;

@@ -1,11 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   programs.nushell = {
     enable = true;
   };
   home.file = {
-    ".config/nushell/"= {
+    ".config/nushell/" = {
       source = ./config.nu;
       recursive = true;
     };

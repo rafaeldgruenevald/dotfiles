@@ -53,6 +53,7 @@
     octaveFull
     nodejs_22
   ];
+
   # Required for nixd
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 }

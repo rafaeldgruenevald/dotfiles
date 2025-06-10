@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ../.././modules/nixos/prog.nix
     ../.././modules/nixos/sway.nix
+    ../.././modules/nixos/emacs.nix
     ../.././modules/nixos/fonts.nix
     ../.././modules/nixos/stylix.nix
     ../.././modules/nixos/portals.nix
@@ -92,6 +93,7 @@
       "wheel"
     ];
     packages = with pkgs; [
+      mpv
       spotify
       discord
       stremio
