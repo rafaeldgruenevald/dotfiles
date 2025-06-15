@@ -249,8 +249,14 @@ default_border pixel 2
 # Autostart
 exec_always autotiling
 
-# Floating
+# Floating - to get the app_id run swaymsg -t get_tree
 for_window [app_id=".blueman-manager-wrapped"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
+for_window [app_id="Thunar"] floating enable
+for_window [app_id="de.feschber.LanMouse"] floating enable
+for_window [app_id="de.haeckerfelix.AudioSharing"] floating enable
+
+# Hide cursor after some time inactive
+seat * hide_cursor 5000
 
 include /etc/sway/config.d/*

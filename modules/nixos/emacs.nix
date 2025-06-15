@@ -9,6 +9,7 @@
         epkgs: with epkgs; [
           treesit-grammars.with-all-grammars
           vterm
+          pdf-tools
           mu4e
         ]
       );

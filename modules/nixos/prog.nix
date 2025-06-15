@@ -12,9 +12,11 @@
     # General Stuff
     wl-clipboard
     ripgrep
+    ranger
     cmake
     unzip
     wget
+    btop
     fzf
 
     # Dev Tools

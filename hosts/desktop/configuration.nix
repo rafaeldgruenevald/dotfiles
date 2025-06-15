@@ -99,6 +99,7 @@
       stremio
       obsidian
       libreoffice
+      audio-sharing
     ];
   };
 

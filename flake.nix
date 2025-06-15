@@ -6,6 +6,8 @@
 
     #ghostty.url = "github:ghostty-org/ghostty";
 
+    lan-mouse.url = "github:feschber/lan-mouse";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     stylix.url = "github:danth/stylix";

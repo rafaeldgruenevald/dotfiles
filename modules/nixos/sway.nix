@@ -13,6 +13,8 @@
     pavucontrol
     rofi-wayland
     wl-clipboard
+    networkmanager
+    kdePackages.okular
   ];
 
   services.blueman.enable = true;
