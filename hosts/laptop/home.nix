@@ -1,10 +1,16 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     ../.././modules/home-manager/gdm/gnome.nix
     ../.././modules/home-manager/nv/nvim.nix
     ../.././modules/home-manager/emacs/emacs.nix
+    inputs.lan-mouse.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -43,6 +49,11 @@
     enable = true;
     userName = "rafaeldgruenevald";
     userEmail = "rafaeldgruenevald@proton.me";
+  };
+
+  programs.lan-mouse = {
+    enable = true;
+    # systemd = true;
   };
 
   # Set Icon Theme
