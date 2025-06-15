@@ -158,13 +158,13 @@
     # GNOME Custom Keybindings
     # Launch Firefox
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Lauch Firefox";
-      command = "flatpak run app.zen_browser.zen";
+      name = "Lauch Web Browser";
+      command = "librewolf";
       binding = "<Super>w";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Lauch Terminal";
-      command = "ghostty";
+      command = "alacritty";
       binding = "<Super>Return";
     };
   };

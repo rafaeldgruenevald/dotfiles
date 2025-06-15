@@ -3,8 +3,8 @@
 {
   imports = [
     ../.././modules/home-manager/gdm/gnome.nix
-    ../.././modules/home-manager/ghostty/ghostty.nix
     ../.././modules/home-manager/nv/nvim.nix
+    ../.././modules/home-manager/emacs/emacs.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

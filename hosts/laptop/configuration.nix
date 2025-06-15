@@ -14,6 +14,7 @@
     ./hardware-configuration.nix # Include the results of the hardware scan.
     ../.././modules/nixos/fonts.nix
     ../.././modules/nixos/prog.nix
+    ../.././modules/nixos/emacs.nix
     ../.././modules/nixos/intel.nix
     ../.././modules/nixos/gnome.nix
     ../.././modules/nixos/stylix.nix
@@ -129,6 +130,7 @@
       zathura
       obsidian
       koreader
+      alacritty
       fragments
       parsec-bin
       thunderbird
