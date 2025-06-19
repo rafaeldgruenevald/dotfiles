@@ -53,7 +53,7 @@
 
   programs.lan-mouse = {
     enable = true;
-    # systemd = true;
+    systemd = true;
   };
 
   # Set Icon Theme
