@@ -9,6 +9,7 @@
   imports = [
     ../.././modules/home-manager/gdm/gnome.nix
     ../.././modules/home-manager/nv/nvim.nix
+    ../.././modules/home-manager/sync/sync.nix
     ../.././modules/home-manager/emacs/emacs.nix
     inputs.lan-mouse.homeManagerModules.default
   ];

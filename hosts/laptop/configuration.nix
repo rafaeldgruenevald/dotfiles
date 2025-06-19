@@ -121,6 +121,7 @@
       "wheel"
     ];
     packages = with pkgs; [
+      mpv
       dconf
       sioyek
       stremio
