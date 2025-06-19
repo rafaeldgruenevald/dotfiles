@@ -6,6 +6,8 @@
 }:
 
 {
+  #environment.systemPackages = with pkgs; [
+  #];
   # Enable the GNOME Desktop Environment.
   services.xserver = {
     enable = true;

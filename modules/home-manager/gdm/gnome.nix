@@ -153,10 +153,10 @@
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
       ];
     };
     # GNOME Custom Keybindings
-    # Launch Firefox
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       name = "Lauch Web Browser";
       command = "librewolf";
@@ -164,8 +164,13 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Lauch Terminal";
-      command = "alacritty";
+      command = "console";
       binding = "<Super>Return";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      name = "Lauch Editor";
+      command = "emacsclient -c";
+      binding = "<Super>e";
     };
   };
 }

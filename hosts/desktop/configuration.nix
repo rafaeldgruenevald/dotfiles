@@ -99,7 +99,6 @@
       discord
       stremio
       obsidian
-      deskflow
       libreoffice
       audio-sharing
     ];
@@ -133,8 +132,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 4242 ];
+  networking.firewall.allowedUDPPorts = [ 4242 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
