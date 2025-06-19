@@ -5,7 +5,7 @@
     appindicator
     caffeine
     forge
-    search-light
+    #search-light
     blur-my-shell
     screen-rotate
   ];
@@ -18,7 +18,7 @@
         "appindicatorsupport@rgcjonas.gmail.com"
         "caffeine@patapon.info"
         "forge@jmmaranan.com"
-        "search-light@icedman.github.com"
+        #"search-light@icedman.github.com"
         "blur-my-shell@aunetx"
         "screen-rotate@shyzus.github.io"
       ];
@@ -37,9 +37,9 @@
       window-swap-last-active = [ ];
     };
     # GNOME Search-Light Config
-    "org/gnome/shell/extensions/search-light" = {
-      shortcut-search = [ "<Shift><Super>Return" ];
-    };
+    #"org/gnome/shell/extensions/search-light" = {
+    #  shortcut-search = [ "<Shift><Super>Return" ];
+    #};
     # GNOME Desktop Keybinds
     "org/gnome/desktop/wm/keybindings" = {
       toggle-maximized = [ ];
