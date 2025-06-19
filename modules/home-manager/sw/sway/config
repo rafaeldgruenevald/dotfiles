@@ -255,6 +255,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [app_id="Thunar"] floating enable
 for_window [app_id="de.feschber.LanMouse"] floating enable
 for_window [app_id="de.haeckerfelix.AudioSharing"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 # Hide cursor after some time inactive
 seat * hide_cursor 5000

@@ -14,7 +14,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../.././modules/nixos/prog.nix
-    ../.././modules/nixos/sway.nix
+    #../.././modules/nixos/sway.nix
+    ../.././modules/nixos/gnome.nix
     ../.././modules/nixos/emacs.nix
     ../.././modules/nixos/fonts.nix
     ../.././modules/nixos/stylix.nix
@@ -98,6 +99,7 @@
       discord
       stremio
       obsidian
+      deskflow
       libreoffice
       audio-sharing
     ];
