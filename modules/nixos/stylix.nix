@@ -15,7 +15,7 @@
       name = "Bibata-Modern-Ice";
       size = 24;
     };
-    image = ../../wallpapers/gruvbox-nix.png;
+    image = ../../wallpapers/The_Artists_Garden_at_Eragny.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   };
 }

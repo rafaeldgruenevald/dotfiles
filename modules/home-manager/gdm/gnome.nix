@@ -52,6 +52,8 @@
 
       close = [ "<Super>q" ];
 
+      toggle-fullscreen-mode = [ "<Super>f" ];
+
       activate-window-menu = [ ];
 
       cycle-group = [ ];
@@ -129,6 +131,7 @@
     # GNOME Mutter
     "org/gnome/mutter" = {
       workspaces-only-on-primary = true;
+      center-new-windows = true;
     };
     "org/gnome/mutter/keybindings" = {
       toggle-tiled-left = [ ];
@@ -164,7 +167,7 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
       name = "Lauch Terminal";
-      command = "console";
+      command = "kgx";
       binding = "<Super>Return";
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {

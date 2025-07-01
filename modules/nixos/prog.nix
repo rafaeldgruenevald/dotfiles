@@ -52,8 +52,9 @@
     gcc
     lua
     rustup
-    octaveFull
     nodejs_22
+    octaveFull
+    typescript
   ];
 
   # Required for nixd
