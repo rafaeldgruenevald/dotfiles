@@ -22,6 +22,7 @@
     # Dev Tools
     chromium
     librewolf
+    ciscoPacketTracer8
     jetbrains.idea-community
     jetbrains.rust-rover
     jetbrains.webstorm
