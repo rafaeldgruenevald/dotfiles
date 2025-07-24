@@ -55,6 +55,8 @@
     nodejs_22
     octaveFull
     typescript
+    python3Full
+    (jdk.override { enableJavaFX = true; })
   ];
 
   # Required for nixd

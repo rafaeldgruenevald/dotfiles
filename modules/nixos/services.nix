@@ -48,6 +48,7 @@
       "com.github.tchx84.Flatseal"
       "com.mattjakeman.ExtensionManager"
       "com.st.STM32CubeIDE"
+      "ch.tlaun.TL"
       "com.github.flxzt.rnote"
     ];
   };

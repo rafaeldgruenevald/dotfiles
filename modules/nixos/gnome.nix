@@ -15,8 +15,11 @@
   environment.systemPackages = with pkgs; [
     komikku
     foliate
+    dialect
     addwater
     fragments
     pavucontrol
+    adwsteamgtk
+    quick-lookup
   ];
 }

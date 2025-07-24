@@ -2,8 +2,10 @@
 
 {
   fonts.packages = with pkgs; [
+    nerd-fonts.ubuntu
+    nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
     nerd-fonts.dejavu-sans-mono
-    nerd-fonts.symbols-only
+    noto-fonts-cjk-sans
   ];
 }
