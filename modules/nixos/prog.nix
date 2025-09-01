@@ -20,13 +20,14 @@
     fzf
 
     # Dev Tools
+    anydesk
     chromium
     librewolf
-    ciscoPacketTracer8
     jetbrains.idea-community
     jetbrains.rust-rover
     jetbrains.webstorm
     jetbrains.clion
+    stm32cubemx
 
     # Terminal
     fd
@@ -62,4 +63,8 @@
 
   # Required for nixd
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "libxml2-2.13.8"
+  ];
 }
