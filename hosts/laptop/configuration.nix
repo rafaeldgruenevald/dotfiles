@@ -6,111 +6,35 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
-
 {
   imports = [
     ./hardware-configuration.nix # Include the results of the hardware scan.
-    ../.././modules/nixos/fonts.nix
+    ../common.nix
     ../.././modules/nixos/prog.nix
-    ../.././modules/nixos/emacs.nix
     ../.././modules/nixos/intel.nix
-    ../.././modules/nixos/gnome.nix
-    ../.././modules/nixos/stylix.nix
-    ../.././modules/nixos/portals.nix
+    ../.././modules/nixos/sway.nix
     ../.././modules/nixos/programs.nix
-    ../.././modules/nixos/services.nix
-    ../.././modules/nixos/virtualization.nix
+    ../.././modules/nixos/virtualization.nix # add more stuff
+    ../.././modules/nixos/emacs.nix
     inputs.home-manager.nixosModules.default
   ];
 
-  boot = {
-    # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
+  networking.hostName = "laptop";
 
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-
-    extraModprobeConfig = ''
-      options snd-intel-dspcfg dsp_driver=1
-      options snd-hda-intel model=alc256-samsung-headphone
-    '';
-
-    plymouth.enable = true;
-  };
-
-  # Enable Nix Flakes
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-    };
-    /*
-      gc = {
-        automatic = true;
-        dates = "weekly";
-        options = "--delete-older-than 7d";
-      };
-    */
-  };
-
-  networking.hostName = "laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # Syncthing ports: 8384 for remote access to GUI
-  # 22000 TCP and/or UDP for sync traffic
-  # 21027/UDP for discovery
-  # source: https://docs.syncthing.net/users/firewall.html
   networking.firewall.allowedTCPPorts = [
     4242
+    1883
+    9001
   ];
   networking.firewall.allowedUDPPorts = [
     4242
+    1883
+    9001
   ];
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "pt_BR.UTF-8";
-      LC_IDENTIFICATION = "pt_BR.UTF-8";
-      LC_MEASUREMENT = "pt_BR.UTF-8";
-      LC_MONETARY = "pt_BR.UTF-8";
-      LC_NAME = "pt_BR.UTF-8";
-      LC_NUMERIC = "pt_BR.UTF-8";
-      LC_PAPER = "pt_BR.UTF-8";
-      LC_TELEPHONE = "pt_BR.UTF-8";
-      LC_TIME = "pt_BR.UTF-8";
-    };
-  };
-
-  # Bluetooth Support
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-
-  hardware.enableAllFirmware = true;
-
-  # Security
-  security.rtkit.enable = true;
-
-  # Configure console keymap
-  console.keyMap = "br-abnt2";
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rafaeldg = {
     isNormalUser = true;
     description = "Rafael Delazeri Gruenevald";
@@ -118,29 +42,60 @@
     extraGroups = [
       "networkmanager"
       "syncthing"
+      "libvirtd"
+      "dialout"
       "wheel"
+      "uucp"
+      "tty"
     ];
     packages = with pkgs; [
-      mpv
       dconf
-      sioyek
-      stremio
+      spotify
       discord
-      zathura
       obsidian
-      koreader
-      alacritty
-      fragments
-      parsec-bin
-      thunderbird
-      pavucontrol
       libreoffice
     ];
   };
 
+  specialisation = {
+    # All my stuff
+    "full".configuration = {
+      environment.etc."specialisation".text = "full";
+      system.nixos.tags = [ "full" ];
+
+      # Turning off stuff from minimal setup
+      services.greetd.enable = lib.mkForce false;
+      services.blueman.enable = lib.mkForce false;
+
+      imports = [
+        ../.././modules/nixos/gnome.nix
+      ];
+      services.flatpak.packages = [
+        "com.github.tchx84.Flatseal"
+        "com.mattjakeman.ExtensionManager"
+        "com.stremio.Stremio"
+        "ch.tlaun.TL"
+      ];
+      users.users.rafaeldg.packages = with pkgs; [
+        lutris
+      ];
+      programs.steam = {
+        enable = true;
+        gamescopeSession.enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+        localNetworkGameTransfers.openFirewall = true;
+      };
+      programs.gamemode.enable = true;
+    };
+  };
+
   # Home-Manager
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit (config.system.nixos) tags;
+    };
     users = {
       "rafaeldg" = import ./home.nix;
     };
@@ -159,5 +114,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

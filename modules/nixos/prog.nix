@@ -10,9 +10,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # General Stuff
-    wl-clipboard
     ripgrep
-    ranger
     cmake
     unzip
     wget
@@ -22,12 +20,12 @@
     # Dev Tools
     anydesk
     chromium
-    librewolf
-    jetbrains.idea-community
-    jetbrains.rust-rover
-    jetbrains.webstorm
-    jetbrains.clion
-    stm32cubemx
+    firefox
+    jetbrains.idea-oss
+    #jetbrains.rust-rover
+    #jetbrains.webstorm
+    #jetbrains.clion
+    arduino-ide
 
     # Terminal
     fd
@@ -36,7 +34,6 @@
     bat
     tldr
     zoxide
-    nushell
     fastfetch
 
     # LSP & Formatters
@@ -50,21 +47,25 @@
 
     # Languages
     go
-    zig
     gcc
     lua
     rustup
+    dotnet-sdk_9
     nodejs_22
-    octaveFull
     typescript
-    python3Full
+    python312
     (jdk.override { enableJavaFX = true; })
   ];
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_9}/share/dotnet";
+  };
 
   # Required for nixd
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "libxml2-2.13.8"
+    #"qtwebengine-5.15.19"
   ];
 }

@@ -1,17 +1,20 @@
 {
   config,
   pkgs,
+  lib,
+  tags,
   inputs,
   ...
 }:
 
 {
   imports = [
+    ../.././modules/home-manager/emacs/emacs.nix
+    ../.././modules/home-manager/sw/sway.nix
+  ]
+  ++ lib.optionals (builtins.elem "full" tags) [
     ../.././modules/home-manager/gdm/gnome.nix
     ../.././modules/home-manager/nv/nvim.nix
-    ../.././modules/home-manager/sync/sync.nix
-    ../.././modules/home-manager/emacs/emacs.nix
-    inputs.lan-mouse.homeManagerModules.default
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -48,13 +51,21 @@
 
   programs.git = {
     enable = true;
-    userName = "rafaeldgruenevald";
-    userEmail = "rafaeldgruenevald@proton.me";
+    settings = {
+      user.name = "rafaeldgruenevald";
+      user.email = "rafaeldgruenevald@proton.me";
+    };
   };
+  /*
+    programs.lan-mouse = {
+      enable = true;
+      systemd = true;
+    };
+  */
 
-  programs.lan-mouse = {
+  programs.vscode = {
     enable = true;
-    systemd = true;
+    package = pkgs.vscode.fhsWithPackages (ps: with ps; [ avrdude ]);
   };
 
   # Set Icon Theme
@@ -63,6 +74,8 @@
     dark = "WhiteSur";
     package = pkgs.whitesur-icon-theme;
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -18,15 +18,6 @@
       viAlias = true;
       vimAlias = true;
     };
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-    gamemode.enable = true;
     dconf.enable = true;
-    virt-manager.enable = true;
   };
 }

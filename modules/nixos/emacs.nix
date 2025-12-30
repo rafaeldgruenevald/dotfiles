@@ -1,62 +1,46 @@
 { config, pkgs, ... }:
 
 {
-  services.emacs = {
-    enable = true;
-    package =
-      with pkgs;
-      (emacsPackagesFor emacs-gtk).emacsWithPackages (
-        epkgs: with epkgs; [
-          treesit-grammars.with-all-grammars
-          vterm
-          pdf-tools
-          mu4e
-        ]
-      );
-  };
+  /*
+    nixpkgs.overlays = [
+      (import (
+        builtins.fetchTarball {
+          url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+          sha256 = "sha256:0swj09pcbi8i2lc54c8cm272v1hsaw7pvkbgbnprqz56jr7l14vw";
+        }
+      ))
+    ];
+  */
   environment.systemPackages = with pkgs; [
-    # Emacs itself
-    binutils
-    emacs
-
-    # Doom dependencies
+    # required dependencies
     git
-    gnumake
-    libtool
+    emacs
+    #emacs-git
     ripgrep
-    gnutls
 
-    # Optional dependencies
+    # optional dependencies
+    coreutils
     fd
-    imagemagick
-    zstd
+    clang
 
-    # Module dependencies
-    # :email mu4e
-    mu
-    isync
-    # :checkers spell
-    (aspellWithDicts (
-      ds: with ds; [
-        en
-        en-computers
-        en-science
-      ]
-    ))
-    # :tools editorconfig
-    editorconfig-core-c
-    # :tools lookup & :lang org +roam
-    sqlite
+    # doom emacs dependencies
+    # :term vterm
+    libtool
+    gnumake
+    # :lang rust
+    rust-analyzer
     # :lang cc
     clang-tools
-    # :lang latex & :lang org (latex previews)
-    texlive.combined.scheme-medium
-    # :lang beancount
-    beancount
-    fava
-    # :lang nix
-    age
+    # :lang csharp
+    csharpier
     # :lang sh
     shellcheck
+    shfmt
+    # :lang web
+    html-tidy
+    stylelint
+    jsbeautifier
+    # :lang data
+    libxml2
   ];
 }

@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred browser
-set $browser librewolf
+set $browser firefox
 # Your preferred terminal emulator
 set $term foot
 # Your preferred editor
@@ -21,7 +21,7 @@ set $menu rofi -show drun
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg /home/rafaeldg/dotfiles/wallpapers/gruvbox-nix.png fill
+output * bg /home/rafaeldg/dotfiles/wallpapers/The_Artists_Garden_at_Eragny.png fill
 #
 # Example configuration:
 #
@@ -248,13 +248,12 @@ default_border pixel 2
 
 # Autostart
 exec_always autotiling
+exec_always emacs --daemon
 
 # Floating - to get the app_id run swaymsg -t get_tree
 for_window [app_id=".blueman-manager-wrapped"] floating enable
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable
 for_window [app_id="Thunar"] floating enable
-for_window [app_id="de.feschber.LanMouse"] floating enable
-for_window [app_id="de.haeckerfelix.AudioSharing"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 
 # Hide cursor after some time inactive
